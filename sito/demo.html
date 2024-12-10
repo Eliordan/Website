@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OUT OF ORDERS</title>
+    <style>
+        /* Stili generali */
+        body {
+            background-color: black; /* Sfondo nero iniziale */
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Evita lo scroll */
+            flex-direction: column; /* Disporre i testi in colonna */
+        }
+
+        /* Stile per la prima scritta */
+        .message {
+            font-size: 48px; /* Dimensione del testo */
+            font-weight: bold;
+            text-align: center;
+            opacity: 0; /* Partiamo con il testo invisibile */
+            animation: fadeInUp 4s ease-out forwards; /* Animazione per far apparire il testo e farlo salire */
+            margin-bottom: 20px; /* Distanza tra la scritta e il testo sottostante */
+            color: black; /* Colore della scritta cambiato a nero */
+            text-shadow: 2px 2px 4px lime, -2px -2px 4px lime; /* Bordo verde lime */
+        }
+
+        /* Stile per la seconda scritta */
+        .sub-message {
+            font-size: 24px; /* Dimensione del testo sottostante */
+            text-align: center;
+            opacity: 0; /* Partiamo con il testo invisibile */
+            animation: fadeIn 4s ease-out forwards; /* Animazione per far apparire il testo */
+            animation-delay: 4s; /* Il testo sotto appare dopo la prima scritta */
+            color: black; /* Colore della scritta cambiato a nero */
+            text-shadow: 2px 2px 4px lime, -2px -2px 4px lime; /* Bordo verde lime */
+        }
+
+        /* Animazione per far apparire lentamente il testo e farlo salire */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0; /* Testo invisibile all'inizio */
+                transform: translateY(20px); /* Parte un po' più in basso */
+            }
+            100% {
+                opacity: 1; /* Testo completamente visibile alla fine */
+                transform: translateY(0); /* Il testo sale fino alla sua posizione finale */
+            }
+        }
+
+        /* Animazione per far apparire lentamente il testo sottostante */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0; /* Testo invisibile all'inizio */
+            }
+            100% {
+                opacity: 1; /* Testo completamente visibile alla fine */
+            }
+        }
+
+        /* Stile per il background sfocato */
+        .background-blurred {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Loghi/logo.jpg'); /* Immagine di sfondo */
+            background-size: cover; /* Copre l'intera area */
+            background-position: center;
+            filter: blur(8px); /* Sfocatura dell'immagine */
+            z-index: -1; /* L'immagine sta dietro al contenuto */
+        }
+
+        /* Stile per la scritta "Torneremo presto!" */
+        .final-message {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0; /* Inizialmente invisibile */
+            color: black; /* Colore della scritta cambiato a nero */
+            animation: fadeInMessage 3s ease-out forwards; /* Animazione per la scritta finale */
+            animation-delay: 3s; /* Il testo appare dopo 3 secondi */
+            text-shadow: 2px 2px 4px lime, -2px -2px 4px lime; /* Bordo verde lime */
+        }
+
+        /* Animazione per la scritta finale */
+        @keyframes fadeInMessage {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Stile per la scritta "E.S.W." finale */
+        .esw-message {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0; /* Partiamo con il testo invisibile */
+            animation: fadeInEsw 3s ease-out forwards; /* Animazione per far apparire la scritta E.S.W. */
+            animation-delay: 6s; /* Il testo appare dopo 6 secondi */
+            color: black; /* Colore della scritta cambiato a nero */
+            text-shadow: 2px 2px 4px lime, -2px -2px 4px lime; /* Bordo verde lime */
+        }
+
+        /* Animazione per far apparire la scritta "E.S.W." */
+        @keyframes fadeInEsw {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sfondo sfocato -->
+    <div class="background-blurred"></div>
+
+    <!-- Prima scritta che appare e sale -->
+    <div class="message">
+        OUT OF ORDERS
+    </div>
+
+    <!-- Seconda scritta che appare sotto -->
+    <div class="sub-message">
+        Questo sito è tuttora in manutenzione! Dovrei riuscire a finirlo entro qualche settimana e poi lo aggiornerò.
+    </div>
+
+    <!-- Scritta "Torneremo presto!" che appare sopra lo sfondo sfocato -->
+    <div class="final-message">
+        Torneremo presto!
+    </div>
+
+    <!-- Scritta "E.S.W." finale -->
+    <div class="esw-message">
+        E.S.W.
+    </div>
+
+    <script>
+        // Dopo 3 secondi, il background sfocato appare e la scritta "Torneremo presto!" appare
+        setTimeout(function() {
+            // Sfondo sfocato viene visibile dopo 3 secondi
+            document.querySelector('.background-blurred').style.display = 'block';
+            // La scritta finale appare sopra
+            document.querySelector('.final-message').style.opacity = 1;
+        }, 3000);
+    </script>
+</body>
+</html>
